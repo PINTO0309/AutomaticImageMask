@@ -3,6 +3,7 @@ import json
 import requests
 import argparse
 import cv2
+import sys
 
 ENDPOINT_URL = 'https://vision.googleapis.com/v1/images:annotate'
 
@@ -29,6 +30,10 @@ if __name__ == '__main__':
                              data=json.dumps({"requests": img_requests}).encode(),
                              params={'key': args.api_key},
                              headers={'Content-Type': 'application/json'})
+
+    chars = [bytes(char, 'utf-8') for char in list(args.mask_word)]
+    charslen = [1 if len(char) == 1 else 2 for char in chars]
+    masklength = sum(charslen)
 
     out = cv2.imread(args.image)
     height, width = out.shape[:2]
@@ -62,20 +67,26 @@ if __name__ == '__main__':
                         pass
 
                     description = z['description'].replace('\n','')
-                    rectposition = ((x1, y1), (x2, y2))
-
-                    print(description, '\t\t', rectposition)
 
                     if args.mask_word in description:
-                        if ((x2 - x1) * (y2 - y1)) <= ((width * height) * 0.1):
-                            cv2.rectangle(out, rectposition[0], rectposition[1], (0, 0, 255), 2)
-                            cv2.rectangle(out, rectposition[0], rectposition[1], (0, 0, 0), -1)
-                    else:
-                        pass
+
+                        descchars = [bytes(char, 'utf-8') for char in list(description)]
+                        desccharslen = [1 if len(char) == 1 else 2 for char in descchars]
+                        desccharslength = sum(desccharslen)
+                        celwidth = round((x2 + 1 - x1) / desccharslength)
+
+                        if celwidth > 0 and desccharslength <= 50:
+                            s = description.find(args.mask_word)
+                            x1 = x1 + sum(desccharslen[:s]) * celwidth
+                            x2 = x1 + masklength * celwidth + 1
+                            rectposition = ((x1, y1), (x2+1, y2+1))
+                            #print(description, '\t\t', rectposition)
+
+                            if ((x2 - x1) * (y2 - y1)) <= ((width * height) * 0.1):
+                                cv2.rectangle(out, rectposition[0], rectposition[1], (105, 105, 105), -1)
 
     cv2.imshow('masked', out)
     cv2.imwrite('masked.png', out)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
-
 

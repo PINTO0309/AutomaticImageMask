@@ -14,13 +14,13 @@ https://qiita.com/PINTO/items/58f9259fa30bb65f895c
 ```
 $ git clone https://github.com/PINTO0309/AutomaticImageMask.git
 $ cd AutomaticImageMask
-$ python3 ImageMask.py [Cloud Vision API Key] [Image File Name] [Keyword for Mask]
+$ python3 AutomaticImageMask.py [Cloud Vision API Key] [Image File Name] [Keyword for Mask]
 ```
 
 # ◆ Execution Sample
 
 ```
-$ python3 ImageMask.py xxxx sample.png raspberrypi
+$ python3 AutomaticImageMask.py xxxx sample.png raspberrypi
 ```
 
 ＊Before [sample.png]<br>

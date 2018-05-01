@@ -29,7 +29,7 @@ $ python3 AutomaticImageMask.py xxxx sample.png raspberrypi
 ＊After [masked.png]<br>
 ![After](https://github.com/PINTO0309/AutomaticImageMask/blob/master/maskedsample.png)
 
-＊Other
+＊Other<br>
 ![Before](https://github.com/PINTO0309/AutomaticImageMask/blob/master/other1.png)
 ![After](https://github.com/PINTO0309/AutomaticImageMask/blob/master/other1masked.png)
 ![Before](https://github.com/PINTO0309/AutomaticImageMask/blob/master/other2.png)

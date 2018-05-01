@@ -1,5 +1,6 @@
 # AutomaticImageMask
 A tool to mask hard copies of terminals with specified keywords.
+https://qiita.com/PINTO/items/58f9259fa30bb65f895c
 
 # ◆ Environment
 

@@ -6,6 +6,7 @@ A tool to mask hard copies of Ubuntu terminals with specified keywords.
 ・Ubuntu 16.04<br>
 ・Python<br>
 ・OpenCV3.x<br>
+・Google Cloud Vision API https://cloud.google.com/vision/
 
 # ◆ How to use
 

@@ -1,5 +1,5 @@
 # AutomaticImageMask
-A tool to mask hard copies of Ubuntu terminals with specified keywords.
+A tool to mask hard copies of terminals with specified keywords.
 
 # ◆ Environment
 
@@ -22,8 +22,8 @@ $ python3 ImageMask.py [Cloud Vision API Key] [Image File Name] [Keyword for Mas
 $ python3 ImageMask.py xxxx sample.png raspberrypi
 ```
 
-＊Before<br>
+＊Before [sample.png]<br>
 ![Before](https://github.com/PINTO0309/AutomaticImageMask/blob/master/sample.png)
 
-＊After<br>
+＊After [masked.png]<br>
 ![After](https://github.com/PINTO0309/AutomaticImageMask/blob/master/maskedsample.png)
